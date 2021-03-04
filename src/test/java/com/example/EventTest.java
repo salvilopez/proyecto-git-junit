@@ -49,5 +49,16 @@ class EventTest {
         assertTrue(event != null);
     }
 
+    @Test
+    @DisplayName("addAttendeesListNull")
+    void addAttendeesListNull() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
+        event.addAttendees(null);
+        assertTrue(event != null);
+    }
+
+
+
+
 
 }
