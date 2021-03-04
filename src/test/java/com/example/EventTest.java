@@ -137,4 +137,23 @@ class EventTest {
         event.removeSpeaker(speaker1);
         assertTrue(event.getSpeakers().size()==1);
     }
+
+    @Test
+    @DisplayName("getSetEvent")
+    public void getSetEvent() {
+        Event event= new Event( );
+        List<Attendee> ateendees=new ArrayList();
+        event.setAttendees( ateendees);
+        event.setId(1l);
+        event.setType(EventType.TECH);
+        event.setTitle("titulo");
+        List<Speaker> speaker = new ArrayList();
+
+        event.setSpeakers(speaker);
+        assertTrue(event.getId()instanceof Long);
+        assertTrue(event.getAttendees() instanceof ArrayList);
+        assertTrue(event.getSpeakers() instanceof ArrayList);
+        assertTrue(event.getTitle() instanceof String);
+        assertTrue(event.getType() instanceof EventType);
+    }
 }
