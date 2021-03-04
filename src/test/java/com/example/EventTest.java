@@ -4,6 +4,9 @@ import com.example.service.EventNotificationServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EventTest {
@@ -57,6 +60,21 @@ class EventTest {
         assertTrue(event != null);
     }
 
+
+    @Test
+    @DisplayName("addAttendeesGetListSize")
+    void addAttendeesGetListSize() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
+
+        List<Attendee> attendees= new ArrayList<>();
+        Attendee attendee1= new Attendee(1l,"salvi","salvi@gmail.com");
+        Attendee attendee2= new Attendee(2l,"admin","admin@gmail.com");
+        attendees.add(attendee1);
+        attendees.add(attendee2);
+        event.setAttendees(attendees);
+        event.addAttendees(attendees);
+        assertTrue(attendees.size()==2);
+    }
 
 
 
