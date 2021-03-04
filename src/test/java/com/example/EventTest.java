@@ -99,5 +99,18 @@ class EventTest {
         event.removeAttendees(attendees);
         assertTrue(event.getAttendees() instanceof ArrayList);
     }
+    @Test
+    @DisplayName("addSpeakerNull")
+    public void addSpeakerNull() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
+        Speaker speaker= new Speaker();
+        event.addSpeaker(null);
+        assertTrue(event.getSpeakers().size()==0);
+
+    }
+
+
+
+
 
 }
