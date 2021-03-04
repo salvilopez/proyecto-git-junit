@@ -84,6 +84,20 @@ class EventTest {
         event.removeAttendee(null);
         assertTrue(event.getAttendees()instanceof ArrayList) ;
     }
+    @Test
+    @DisplayName("removeAttendeessGetList")
+    void removeAttendeessGetList() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
 
+        List<Attendee> attendees= new ArrayList<>();
+        Attendee attendee1= new Attendee(1l,"salvi","salvi@gmail.com");
+        Attendee attendee2= new Attendee(2l,"admin","admin@gmail.com");
+        attendees.add(attendee1);
+        attendees.add(attendee2);
+        event.setAttendees(attendees);
+        event.addAttendees(attendees);
+        event.removeAttendees(attendees);
+        assertTrue(event.getAttendees() instanceof ArrayList);
+    }
 
 }
