@@ -23,4 +23,11 @@ class EventTest {
 
     }
 
+    @Test
+    @DisplayName("eventIsNotNullWithConstructorDefault")
+    void eventIsNotNullWithConstructorDefault() {
+        Event event= new Event();
+        assertTrue(event != null);
+    }
+
 }
