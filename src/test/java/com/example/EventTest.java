@@ -126,5 +126,15 @@ class EventTest {
         assertTrue(event.getSpeakers().size()==0);
     }
 
-
+    @Test
+    @DisplayName("removeSpeaker")
+    public void removeSpeaker() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
+        Speaker speaker2 = new Speaker( 1l,"name","expertise");
+        Speaker speaker1 = new Speaker( 2l,"name","expertise");
+        event.addSpeaker(speaker2);
+        event.addSpeaker(speaker1);
+        event.removeSpeaker(speaker1);
+        assertTrue(event.getSpeakers().size()==1);
+    }
 }
