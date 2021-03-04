@@ -30,4 +30,12 @@ class EventTest {
         assertTrue(event != null);
     }
 
+    @Test
+    @DisplayName("addAttendeeNull")
+    void addAttendeeNull() {
+        Event event= new Event();
+        event.addAttendee(null);
+        assertTrue(event != null);
+    }
+
 }
