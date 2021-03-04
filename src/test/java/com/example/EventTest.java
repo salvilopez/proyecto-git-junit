@@ -1,5 +1,6 @@
 package com.example;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,10 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class EventTest {
 
     @Test
-    void addAttendee() {
+    @DisplayName("isEvent")
+    void isEvent() {
+        Event event= new Event();
+        assertTrue(event instanceof Event);
     }
 
-    @Test
-    void addAttendees() {
-    }
+
 }
