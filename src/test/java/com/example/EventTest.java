@@ -109,7 +109,14 @@ class EventTest {
 
     }
 
-
+    @Test
+    @DisplayName("addSpeaker")
+    public void addSpeaker() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
+        Speaker speaker = new Speaker( 1l,"name","expertise");
+        event.addSpeaker(speaker);
+        assertTrue(event.getSpeakers().size()>0);
+    }
 
 
 
