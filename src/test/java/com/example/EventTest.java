@@ -76,7 +76,14 @@ class EventTest {
         assertTrue(attendees.size()==2);
     }
 
+    @Test
+    @DisplayName("removeAttendeesGetListNull")
+    void removeAttendeesGetListNull() {
+        Event event= new Event( 1l,"test",EventType.TECH,new EventNotificationServiceImpl());
 
+        event.removeAttendee(null);
+        assertTrue(event.getAttendees()instanceof ArrayList) ;
+    }
 
 
 }
