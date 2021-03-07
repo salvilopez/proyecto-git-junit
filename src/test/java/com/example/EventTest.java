@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.service.EventNotificationService;
 import com.example.service.EventNotificationServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -155,5 +156,127 @@ class EventTest {
         assertTrue(event.getSpeakers() instanceof ArrayList);
         assertTrue(event.getTitle() instanceof String);
         assertTrue(event.getType() instanceof EventType);
+    }
+
+    @Test
+    @DisplayName("Test announcement")
+    public void testAnouncement() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        List<Notification> notifications= new ArrayList<Notification>();
+        attendee.setNotifications(notifications);
+        attendees.add(attendee);
+        event.setAttendees(attendees);
+        event.notifyAssistants();
+
+
+        assertEquals("The next big event is coming!",event.getAttendees().get(0).getNotifications().get(0).getMessage());
+
+
+    }
+
+
+   //******************************************   attendees   ***************************************************//
+
+    @Test
+    @DisplayName("Remove attendeesNull")
+    public void removeAttendeesNull() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        List<Notification> notifications= new ArrayList<Notification>();
+        attendee.setNotifications(notifications);
+        attendees.add(attendee);
+        event.setAttendees(attendees);
+        event.removeAttendees(null);
+
+    }
+
+    @Test
+    @DisplayName("Remove attendees")
+    public void removeAttendees() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        List<Notification> notifications= new ArrayList<Notification>();
+        attendee.setNotifications(notifications);
+        attendees.add(attendee);
+        event.setAttendees(attendees);
+        event.removeAttendees(attendees);
+
+    }
+    @Test
+    @DisplayName("Remove attendees without attentees")
+    public void removeAttendeesWithoutattentees() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        List<Notification> notifications= new ArrayList<Notification>();
+        attendee.setNotifications(notifications);
+        attendees.add(attendee);
+        event.removeAttendees(attendees);
+
+
+
+    }
+
+
+
+    //******************************************   attendee   ***************************************************//
+
+
+
+    @Test
+    @DisplayName("Remove attendeNull")
+    public void removeAttendeNull() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        event.removeAttendee(null);
+
+    }
+
+
+
+
+
+    @Test
+    @DisplayName("Remove attende")
+    public void removeAttende() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        List<Notification> notifications= new ArrayList<Notification>();
+        attendee.setNotifications(notifications);
+        attendees.add(attendee);
+        event.removeAttendee(attendee);
+    }
+    @Test
+    @DisplayName("Remove attende without attentees")
+    public void removeAttendeWithoutAttentees() {
+        EventNotificationService evnS= new EventNotificationServiceImpl();
+        Event event = new Event(1l,"eventoPrueba",EventType.TECH,evnS);
+
+        Attendee attendee= new Attendee(1l,"salvi","salvi@gmail.com");
+        List<Attendee> attendees= new ArrayList<Attendee>();
+        List<Notification> notifications= new ArrayList<Notification>();
+        attendee.setNotifications(notifications);
+        attendees.add(attendee);
+        event.setAttendees(attendees);
+        event.removeAttendee(attendee);
+
     }
 }
